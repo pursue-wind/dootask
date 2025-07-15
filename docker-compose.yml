@@ -1,7 +1,7 @@
 services:
   php:
     container_name: "dootask-php-${APP_ID}"
-    image: "kuaifan/php:swoole-8.0.rc21"
+    image: "crpi-auefbqaevrngfqpr.cn-shenzhen.personal.cr.aliyuncs.com/pursue-wind/php:swoole-8.0.rc21"
     shm_size: 2G
     ulimits:
       core:
@@ -96,10 +96,11 @@ services:
   appstore:
     container_name: "dootask-appstore-${APP_ID}"
     privileged: true
-    image: "dootask/appstore:0.1.7"
+    image: "crpi-auefbqaevrngfqpr.cn-shenzhen.personal.cr.aliyuncs.com/pursue-wind/dootask_appstore:0.1.7"
     volumes:
       - shared_data:/usr/share/dootask
       - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/docker/daemon.json:/etc/docker/daemon.json
       - ./:/var/www
     environment:
       HOST_PWD: "${PWD}"
